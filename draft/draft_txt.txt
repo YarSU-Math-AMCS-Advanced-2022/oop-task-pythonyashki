@@ -1,0 +1,81 @@
+from enum import Enum
+
+class TransportEnum(Enum):
+    UNDEFINE = 0
+    AFOOT = 1
+    BICYCLE = 2
+    SCOOTER = 3
+    PUBLICTRAN = 4
+    CAR = 5
+
+class TranSpeedEnum(Enum):
+    UNDEFINE = 0
+    AFOOT = 4.0
+    BICYCLE = 8.0
+    SCOOTER = 15.0
+    PUBLICTRAN = 30.0
+    CAR = 70.0
+
+class DistrictEnum(Enum):
+    UNDEFINE = 0
+    BRAGINO = 1
+    ZAVOLGA = 2
+    KIROVSKYI = 3
+    LENINSKYI = 4
+    FRUNZENSKYI = 5
+    KRASNOPEREKOPSKYI = 6
+
+class Address:
+    country: str
+    city: str
+    district: DistrictEnum
+    street: str
+    house_number: int
+    apart_number: int
+
+class Person:
+    iden: int
+    name: str
+    phone_number: str
+    age: int
+    living_address: Address
+
+class Courier(Person):
+    # район, в котором курьер работает
+    area: DistrictEnum
+    transport: TransportEnum
+    salary: int
+    registration_time: int
+    active: bool
+    order: Order
+
+class CourierManager:
+    base: [Courier]
+    
+    # функция которая по заказу определяет курьера, который будет доставлять этот заказ, или определяет
+    # что такого нет. От заказа нужно: откуда, куда, как долго можно ехать(в часах), вес(кг), объем(литры).
+    # коды ошибок 
+    # 0 - все хорошо
+    # 1 - не успеем доехать
+    # 2 - слишком тяжёлый заказ
+    # 3 - слишком объемный заказ
+    def choose_courier(order: Order) -> (Courier, int):
+        
+        if order.weight > 7.0 || order.volume > 5.0:
+            # считаем, что для большего веса или объема нужна машина
+            
+            # проверяем что успеем доехать
+            if dist(order.start, order.end) / TranSpeedEnum[CAR] > order.time_limit:
+                return (0, 1)
+            
+            for cour in base:
+                if cour.transport == CAR and cour.active == True:
+                    cour.order = order
+                    return (cour, 0)
+                
+            if order.weight > 7.0:
+                return (0, 2)
+            else:
+                return (0, 3)
+        
+        
