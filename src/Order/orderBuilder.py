@@ -1,6 +1,6 @@
 from utils.generatorId import CreatorID
-from src.Shop import Shop
-from src.Order import Order
+from Shop.Shop import Shop
+from Order.Order import Order
 from src.Product import Product
 
 
