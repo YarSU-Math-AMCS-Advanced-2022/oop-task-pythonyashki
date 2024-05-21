@@ -1,16 +1,28 @@
 from dataclasses import dataclass
 from typing import Optional
-#id: number
-#name: string
-#isHasSale: boolean
-#price: number:
-#isHightAge: boolean
-#count: number
-#weight: number
+
 
 @dataclass
 class Product:
     """
+    Product class:
+
+    Attributes:
+    id : int
+        product id
+    name : string
+        product name
+    isHasSale:
+        flag: whether the product is discounted 
+    price : int
+        product price
+    isHightAge : boolean
+        flag: whether the product is expired
+    count : int
+        amount of product
+    weith : int
+        weith of product
+
     """
     id: Optional[int] = None
     name: Optional[str] = None
