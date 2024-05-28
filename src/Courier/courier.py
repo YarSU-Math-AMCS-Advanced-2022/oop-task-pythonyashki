@@ -1,3 +1,9 @@
+import Person
+import DistrictEnum
+import TransportEnum
+import Order
+import Address
+
 class Courier(Person):
     # район, в котором курьер работает
     area: DistrictEnum
