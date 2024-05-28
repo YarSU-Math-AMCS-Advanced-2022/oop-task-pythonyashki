@@ -15,7 +15,10 @@ class GeneralManager(metaclass=MetaSingleton):
         self.__courier_manager: CourierManager = CourierManager()
         self.__shop_manager: ShopManager = ShopManager()
         self.__load_couriers(file_path + "couriers.json")
-        
+        self.__load_retailers(file_path + "shop.json")
+
+    def __load_retailers(self, file_path: str):
+        self.__shop_manager.load_json(file_path)
 
     def __load_couriers(self, file_path: str):
         with open(file_path, 'r') as file:
