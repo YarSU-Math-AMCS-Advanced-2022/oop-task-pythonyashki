@@ -55,5 +55,5 @@ class CourierManager:
                  transport: TransportEnum,
                  salary: int,
                  registration_time: int) -> void:
-        cour = Courier(name, phone_number, living_address, area, transport, salary, registration_time)
+        cour = Courier(name, phone_number, age, living_address, area, transport, salary, registration_time)
         base.append(cour)

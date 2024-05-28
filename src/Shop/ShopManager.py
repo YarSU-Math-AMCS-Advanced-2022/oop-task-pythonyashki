@@ -99,7 +99,7 @@ class ShopManager(metaclass=MetaSingleton):
 
     def __shop_selection_menu(self) -> Optional[int]:
         """
-        The method displays a menu for selecting a store or restaurant and accepts the response
+        The method displays a menu for selecting a store and accepts the response
         the user
         """
         shops_name = self.__get_shops_name_list()
@@ -114,7 +114,7 @@ class ShopManager(metaclass=MetaSingleton):
 
     def __product_selection_menu(self, retailer_idx: int) -> Optional[int]:
         """
-        The method displays a menu for selecting items in a store or restaurant and accepts
+        The method displays a menu for selecting items in a store and accepts
         the user's response
         """
         print('Меню заведения: ',
@@ -134,12 +134,12 @@ class ShopManager(metaclass=MetaSingleton):
             return None
 
     def __update_shops(self):
-        """The method updates the menu in all shops and restaurants"""
+        """The method updates the menu in all shops"""
         for shop in self.__shops:
             shop.updating_menu()
 
     def __get_shops_name_list(self) -> str:
-        """The method generates a list of all restaurants and shops in the form of a string"""
+        """The method generates a list of all shops in the form of a string"""
         result = []
         for number, shop in enumerate(self.__shops):
             result.append(f'{number + 1}. {shop.name}')
@@ -147,7 +147,7 @@ class ShopManager(metaclass=MetaSingleton):
 
     def __get_shops_menu(self, idx: int) -> str:
         """
-        The method generates a list of all items in a store or restaurant in the form
+        The method generates a list of all items in a store in the form
         lines
         """
         result = []

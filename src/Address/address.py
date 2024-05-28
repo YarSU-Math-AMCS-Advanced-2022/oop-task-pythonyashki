@@ -32,4 +32,5 @@ class Address:
         
 # функция заглушка
 def dist(adrs1: Address, adrs2: Address) -> float:
+    return 
     # return расстояние между двумя адресами
