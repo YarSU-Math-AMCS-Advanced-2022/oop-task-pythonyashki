@@ -34,3 +34,7 @@ class GeneralManager(metaclass=MetaSingleton):
                 data[i]["salary"],
                 data[i]["registration_time"]
             )
+
+    def __get_order_status(self) -> str:
+        result = []
+        order_status = self.__courier_manager

@@ -4,6 +4,7 @@ import Address
 from Transport.transport import TransportEnum
 from Transport.transport import TranSpeedEnum
 from Address.address import DistrictEnum
+from Address.address import dist
 
 class CourierManager:
     base: [Courier]
