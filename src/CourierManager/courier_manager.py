@@ -1,9 +1,9 @@
 import Courier
 import Order
 import Address
-import TransportEnum
-import TranSpeedEnum
-import DistrictEnum
+from Transport.transport import TransportEnum
+from Transport.transport import TranSpeedEnum
+from Address.address import DistrictEnum
 
 class CourierManager:
     base: [Courier]
@@ -16,11 +16,11 @@ class CourierManager:
     # 2 - слишком тяжёлый заказ
     # 3 - слишком объемный заказ
     # 4 - нет свободных курьеров
-    def choose_courier(order: Order) -> (Courier, int):
+    def choose_courier(self, order: Order) -> (Courier, int):
         
         # проверяем что есть активные курьеры
         found_active_cour = False
-        for cour in base:
+        for cour in self.base:
             if cour.active:
                 found_active_cour = True
                 break            
@@ -34,7 +34,7 @@ class CourierManager:
             if dist(order.start, order.end) / TranSpeedEnum[CAR] > order.time_limit:
                 return (0, 1)
             
-            for cour in base:
+            for cour in self.base:
                 if cour.transport == CAR and cour.active == True:
                     cour.take_order(order)
                     return (cour, 0)
@@ -46,7 +46,7 @@ class CourierManager:
         
         # вес меньше 7, объем меньше 5
         # проверяем что есть курьеры, которые смогут доставить за требуемое время
-        for cour in base:
+        for cour in self.base:
             if cour.active and dist(order.start, order.end) / TranSpeedEnum[cour.transport] <= order.time_limit:
                 return (cour, 0)
         
@@ -54,13 +54,14 @@ class CourierManager:
         return (0, 1)
     
     # добавление нового курьеры в базу
-    def add_courier(name: str,
+    def add_courier(self, 
+                 name: str,
                  phone_number: str,
                  age: int,
-                 living_address: Adderss,
+                 living_address: Address,
                  area: DistrictEnum,
                  transport: TransportEnum,
                  salary: int,
-                 registration_time: int) -> void:
+                 registration_time: int) -> None:
         cour = Courier(name, phone_number, age, living_address, area, transport, salary, registration_time)
-        base.append(cour)
+        self.base.append(cour)
