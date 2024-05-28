@@ -1,6 +1,6 @@
 import Person
-import DistrictEnum
-import TransportEnum
+from Address.address import DistrictEnum
+from Transport.transport import TransportEnum
 import Order
 import Address
 
@@ -12,13 +12,13 @@ class Courier(Person):
     registration_time: int
     active: bool
     order: Order
-    marks: [float] # оценка курьера
+    marks: list[float] # оценка курьера
     taken_orders: int # количество доставленных заказов
         
     def __init__(self, name: str,
                  phone_number: str,
                  age: int,
-                 living_address: Adderss,
+                 living_address: Address,
                  area: DistrictEnum,
                  transport: TransportEnum,
                  salary: int,
@@ -33,17 +33,17 @@ class Courier(Person):
         self.order = 0 # пустой(несуществующий) заказ
         self.mark = []
         
-    def take_order(order: Order) -> void:
+    def take_order(self, order: Order) -> None:
         self.active = False
         self.order = order
         
-    def finish_order(order: Order) -> void:
+    def finish_order(self, order: Order) -> None:
         self.active = True
         self.order = 0
         
-    def mark_cour(mark: int) -> void:
+    def mark_cour(self, mark: int) -> None:
         if 1 <= mark and mark <= 5:
-            marks.append(float(mark))
+            self.marks.append(float(mark))
             
-    def get_mark() -> float:
-        return sum(marks) / len(marks)
+    def get_mark(self) -> float:
+        return sum(self.marks) / len(self.marks)
