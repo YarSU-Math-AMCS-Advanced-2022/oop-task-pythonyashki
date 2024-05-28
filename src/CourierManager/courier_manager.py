@@ -1,3 +1,10 @@
+import Courier
+import Order
+import Address
+import TransportEnum
+import TranSpeedEnum
+import DistrictEnum
+
 class CourierManager:
     base: [Courier]
     
@@ -40,11 +47,11 @@ class CourierManager:
         # вес меньше 7, объем меньше 5
         # проверяем что есть курьеры, которые смогут доставить за требуемое время
         for cour in base:
-            if cour.active and dist(order.start, order.end) / TranSpeedEnum[cour.transport] <= ordr.time_limit:
+            if cour.active and dist(order.start, order.end) / TranSpeedEnum[cour.transport] <= order.time_limit:
                 return (cour, 0)
         
         # иначе говорим, что не успеваем доехать
-        return (cour, 1)
+        return (0, 1)
     
     # добавление нового курьеры в базу
     def add_courier(name: str,
