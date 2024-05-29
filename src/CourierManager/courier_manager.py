@@ -53,6 +53,15 @@ class CourierManager:
         
         # иначе говорим, что не успеваем доехать
         return (0, 1)
+
+    # функция возвращает все заказы, доставляемые в данный момент
+    # если заказа не в списке, значит он был доставлен
+    def get_active_orders()->[Order]:
+        active_orders = []
+        for cour in base:
+            if cour.active == False:
+                active_orders.append(cour.order)
+        return active_orders
     
     # добавление нового курьеры в базу
     def add_courier(self, 
