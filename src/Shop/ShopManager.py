@@ -1,7 +1,7 @@
 import json
 from typing import Optional
 from Shop.shop import Shop
-from Order.order import Order
+from Order.Order import Order
 from Order.orderBuilder import OrderBuilder
 from Product.product import Product
 from utils.System import System
@@ -14,7 +14,7 @@ class ShopManager(metaclass=MetaSingleton):
         self.__shops: list[Shop] = []
 
     def __str__(self):
-        return f'Список магазинов:\n' + '\n'.join(
+        return f'Спиѝок магазинов:\n' + '\n'.join(
             [str(item) for item in self.__shops])
 
     def add_shop(self, shop: Shop):
@@ -74,7 +74,7 @@ class ShopManager(metaclass=MetaSingleton):
                     )
                 print('Хотите выбрать что то еще?',
                       '1. Да',
-                      '2. Нет, завершить сборку заказа', sep='\n')
+                      '2. Нет, завершить ѝборку заказа', sep='\n')
                 chose = System.validate_integer_in_range(1, 2)
                 System.clear_terminal()
                 if chose == 1:
@@ -83,10 +83,10 @@ class ShopManager(metaclass=MetaSingleton):
                 elif chose == 2:
                     return builder.order
                 if product_idx is None:
-                    print('Если вы выберите другое заведение, то текущий заказ '
-                          'сбросится. Вы точно хотите это сделать?',
+                    print('Еѝли вы выберите другое заведение, то текущий заказ '
+                          'ѝброѝитѝѝ. Вы точно хотите ѝто ѝделать?',
                           '1. Да',
-                          '2. Нет, вернуться в меню заведения', sep='\n')
+                          '2. Нет, вернутьѝѝ в меню заведениѝ', sep='\n')
                     chose = System.validate_integer_in_range(1, 2)
                     System.clear_terminal()
                     if chose == 2:
@@ -117,7 +117,7 @@ class ShopManager(metaclass=MetaSingleton):
         The method displays a menu for selecting items in a store and accepts
         the user's response
         """
-        print('Меню заведения: ',
+        print('Меню заведениѝ: ',
               '0. Перейти в корзину',
               self.__get_shops_menu(retailer_idx),
               f'{len(self.__shops[retailer_idx].menu) + 1}. Назад',

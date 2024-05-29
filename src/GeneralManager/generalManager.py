@@ -40,18 +40,18 @@ class GeneralManager(metaclass=MetaSingleton):
         result = []
         order_status = self.__courier_manager.get_order_status()
         for status in order_status[0]:
-            result.append(f"Заказ {status[0]} выполнен доставщиком {status[1]}!")
+            result.append(f"Заказ {status[0]} выполнен доcтавщиком {status[1]}!")
         for status in order_status[1]:
-            result.append(f"Оставшееся время доставки заказа {status[0][0]}"
+            result.append(f"Оѝтавшееѝѝ времѝ доcтавки заказа {status[0][0]}"
                           f": {status[1]}\n"
-                          f"Доставщик {status[0][1]}")
+                          f"Доcтавщик {status[0][1]}")
         return '\n'.join(result)
     
     def start(self):
         while True:
             print('Меню:',
                   '1. Сделать новый заказ',
-                  '2. Уточнить статус заказов',
+                  '2. Уточнить cтатуc заказов',
                   '3. Выйти', sep='\n')
             chose = System.validate_integer_in_range(1, 3)
             System.clear_terminal()
@@ -59,7 +59,7 @@ class GeneralManager(metaclass=MetaSingleton):
                 order = self.__shop_manager.make_order()
                 if order.is_valid:
                     print(f'Заказ принят. Id заказа {order.id[0][-8:]}.\n'
-                          f'Ищем доставщика...')
+                          f'Ищем доѝтавщика...')
                     length = random.randint(0, 1000)
                     if not self.__courier_manager.accept_order(
                             order,

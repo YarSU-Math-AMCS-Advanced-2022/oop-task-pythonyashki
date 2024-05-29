@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
-from Product.Product import Product
+from Product.product import product
 from Client.client import Client
 import Sale
 
 class Basket:
-    products: Optional[Product]
+    products: Optional[product]
     totalPriceProduct: int
     priceDelivery: int
     sale: Sale

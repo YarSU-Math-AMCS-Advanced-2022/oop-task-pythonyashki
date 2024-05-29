@@ -1,7 +1,10 @@
 from random import randint
 
+from Address.address import Address
+from utils.generatorId import CreatorID
+
 class Person:
-    iden: int
+    iden: str
     name: str
     phone_number: str
     age: int
@@ -11,7 +14,7 @@ class Person:
                  phone_number: str,
                  age: int,
                  living_address: Address):
-        self.iden = randint(1000000000)
+        self.iden = CreatorID.generate_id()
         self.name = name
         self.phone_number = phone_number
         self.age = age
