@@ -47,3 +47,40 @@ class GeneralManager(metaclass=MetaSingleton):
                           f"Доставщик {status[0][1]}")
         return '\n'.join(result)
     
+    def start(self):
+        while True:
+            print('Меню:',
+                  '1. Сделать новый заказ',
+                  '2. Уточнить статус заказов',
+                  '3. Выйти', sep='\n')
+            chose = System.validate_integer_in_range(1, 3)
+            System.clear_terminal()
+            if chose == 1:
+                order = self.__shop_manager.make_order()
+                if order.is_valid:
+                    print(f'Заказ принят. Id заказа {order.id[0][-8:]}.\n'
+                          f'Ищем доставщика...')
+                    length = random.randint(0, 1000)
+                    if not self.__courier_manager.accept_order(
+                            order,
+                            length
+                    ):
+                        print('Свободных доставщиков в вашем районе пока нет, '
+                              'идет поиск...')
+                        while not self.__courier_manager.accept_order(
+                                order,
+                                length
+                        ):
+                            print(self.__get_order_status())
+                            time.sleep(5)
+                            self.__courier_manager.tick()
+                    print('Доставщик найден!')
+                    _ = input()
+                    System.clear_terminal()
+            elif chose == 2:
+                print(self.__get_order_status())
+                _ = input()
+                System.clear_terminal()
+            elif chose == 3:
+                return
+            self.__courier_manager.tick()
