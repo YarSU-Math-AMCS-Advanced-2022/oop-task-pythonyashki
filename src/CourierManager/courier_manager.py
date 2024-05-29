@@ -1,9 +1,10 @@
 import Courier
 import Order
 import Address
-import TransportEnum
-import TranSpeedEnum
-import DistrictEnum
+from Transport.transport import TransportEnum
+from Transport.transport import TranSpeedEnum
+from Address.address import DistrictEnum
+from Address.address import dist
 
 class CourierManager:
     base: [Courier]
@@ -52,6 +53,15 @@ class CourierManager:
         
         # иначе говорим, что не успеваем доехать
         return (0, 1)
+
+    # функция возвращает все заказы, доставляемые в данный момент
+    # если заказа не в списке, значит он был доставлен
+    def get_active_orders()->[Order]:
+        active_orders = []
+        for cour in base:
+            if cour.active == False:
+                active_orders.append(cour.order)
+        return active_orders
     
     # добавление нового курьеры в базу
     def add_courier(name: str,
