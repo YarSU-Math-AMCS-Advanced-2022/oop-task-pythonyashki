@@ -1,6 +1,7 @@
 import json
 import random
 import time
+from System import System
 
 from utils.MetaSingleton import MetaSingleton
 from Shop.ShopManager import ShopManager
@@ -37,4 +38,12 @@ class GeneralManager(metaclass=MetaSingleton):
 
     def __get_order_status(self) -> str:
         result = []
-        order_status = self.__courier_manager
+        order_status = self.__courier_manager.get_order_status()
+        for status in order_status[0]:
+            result.append(f"Заказ {status[0]} выполнен доставщиком {status[1]}!")
+        for status in order_status[1]:
+            result.append(f"Оставшееся время доставки заказа {status[0][0]}"
+                          f": {status[1]}\n"
+                          f"Доставщик {status[0][1]}")
+        return '\n'.join(result)
+    
