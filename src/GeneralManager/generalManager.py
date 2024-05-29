@@ -1,7 +1,7 @@
 import json
 import random
 import time
-from System import System
+from utils.System import System
 
 from utils.MetaSingleton import MetaSingleton
 from Shop.ShopManager import ShopManager
