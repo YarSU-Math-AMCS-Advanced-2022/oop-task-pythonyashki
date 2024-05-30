@@ -1,6 +1,6 @@
 from utils.generatorId import CreatorID
 from Shop.shop import Shop
-from Order.Order import Order
+from Order.order import Order
 from Product.product import Product
 
 

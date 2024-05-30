@@ -1,7 +1,7 @@
 import json
 from typing import Optional
 from Shop.shop import Shop
-from Order.Order import Order
+from Order.order import Order
 from Order.orderBuilder import OrderBuilder
 from Product.product import Product
 from utils.System import System

@@ -1,8 +1,8 @@
 from utils.generatorId import CreatorID
-from Sale.Sale import Sale
-from Shop.Shop import Shop
-from Product.Product import Product
-from Date.Date import Date
+from Sale.sale import Sale
+from Shop.shop import Shop
+from Product.product import Product
+from Date.date import Date
 
 class saleBuilder:
     def __init__(self):
