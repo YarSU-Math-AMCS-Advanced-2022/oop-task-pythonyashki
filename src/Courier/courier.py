@@ -4,42 +4,38 @@ import TransportEnum
 import Order
 import Address
 
+import time
+
 class Courier(Person):
-    # район, в котором курьер работает
-    area: DistrictEnum
-    transport: TransportEnum
-    salary: int
-    registration_time: int
-    active: bool
-    order: Order
-    marks: [float] # оценка курьера
-    taken_orders: int # количество доставленных заказов
+    iden: tuple[str]# courier id
+    with_order: bool# true if courier delivers order right now, else false
+    area: int
+    transport: str
+    start_time: float
+    order_time: float
+    order_id: str
+    salary: float
+    marks: [float] # courier's mark    
+    
+    #returns true if courier can take the order, else false
+    def is_free(self) -> bool:
+        if self.with_order:
+            return False
+        else:
+            return True
+    
+    #returns time needed to finish the order
+    def order_time_left(self) -> float:
+        return self.order_time - (time.time() - self.start_time)
         
-    def __init__(self, name: str,
-                 phone_number: str,
-                 age: int,
-                 living_address: Adderss,
-                 area: DistrictEnum,
-                 transport: TransportEnum,
-                 salary: int,
-                 registration_time: int):
-        # конструктор родительского класса
-        super().__init__(self, name, phone_number, age, living_address)
-        self.area = area
-        self.transport = transport
-        self.salary = salary
-        self.registration_time = registration_time
-        self.active = True
-        self.order = 0 # пустой(несуществующий) заказ
-        self.mark = []
+    def time_starter(self, road_length: float, order_id: str) -> None:
+        self.order_id = order_id
+        self.start_time = time.time()
+        self.order_time = road_length / TranSpeedEnum[self.transport]
         
-    def take_order(order: Order) -> void:
-        self.active = False
-        self.order = order
-        
-    def finish_order(order: Order) -> void:
-        self.active = True
-        self.order = 0
+    def tick(self):
+        if time.time() - self.start_time >= self.order_time:
+            self.with_order = False
         
     def mark_cour(mark: int) -> void:
         if 1 <= mark and mark <= 5:
