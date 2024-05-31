@@ -1,9 +1,9 @@
 
-from GeneralManager.generalManager import GeneralManager
+from GeneralManager.GeneralManager import GeneralManager
 
 
 def main():
-    manager = GeneralManager('utils/')
+    manager = GeneralManager('src/')
     manager.start()
 
 

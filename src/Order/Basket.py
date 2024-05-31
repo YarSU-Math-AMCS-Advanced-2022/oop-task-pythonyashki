@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
-from Product.product import Product
-from Client.client import Client
+from Product.Product import Product
+from Client.Client import Client
 import Sale
 
 class Basket:

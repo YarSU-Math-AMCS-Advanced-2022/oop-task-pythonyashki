@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
-from Product.product import Product
-from Date.date import Date
-from utils.generatorId import CreatorID
-from Shop.shop import Shop
+from Product.Product import Product
+from Date.Date import Date
+from utils.GeneratorId import CreatorID
+from Shop.Shop import Shop
 
 class Sale:
     _id: str

@@ -1,7 +1,7 @@
 from random import randint
 
-from Address.address import Address
-from utils.generatorId import CreatorID
+from Address.Address import Address
+from utils.GeneratorId import CreatorID
 
 class Person:
     iden: str

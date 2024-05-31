@@ -1,7 +1,7 @@
 from random import randint
-from Address.address import Address
-from utils.generatorId import CreatorID
-from Product.product import Product
+from Address.Address import Address
+from utils.GeneratorId import CreatorID
+from Product.Product import Product
 
 
 class Shop:
@@ -18,9 +18,9 @@ class Shop:
         self.__area: Address = Address
 
     def __str__(self):
-        return f'Имя: {self.__name}, ' \
+        return f'Имѝ: {self.__name}, ' \
                f'Меню: {[str(item) for item in self.__menu]}, ' \
-               f'Стоп лист: {self.__stop_list}'
+               f'Стоп лиѝт: {self.__stop_list}'
 
     @property
     def name(self) -> str:

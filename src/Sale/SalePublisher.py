@@ -2,7 +2,7 @@ from Sale import Sale
 from typing import Optional
 from abc import ABC, abstractmethod
 from enum import Enum
-from utils.enums import EventsSales
+from utils.Enums import EventsSales
 
 class SubscriberSale(ABC):
     @abstractmethod

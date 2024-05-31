@@ -1,6 +1,6 @@
 from typing import Dict, Optional
-from Order.order import Order
-from Courier.courier import Courier
+from Order.Order import Order
+from Courier.Courier import Courier
 
 DISTANCES: tuple = (850, 1700, 3000)
 

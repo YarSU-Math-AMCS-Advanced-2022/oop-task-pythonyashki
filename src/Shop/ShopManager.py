@@ -1,9 +1,9 @@
 import json
 from typing import Optional
-from Shop.shop import Shop
-from Order.order import Order
-from Order.orderBuilder import OrderBuilder
-from Product.product import Product
+from Shop.Shop import Shop
+from Order.Order import Order
+from Order.OrderBuilder import OrderBuilder
+from Product.Product import Product
 from utils.System import System
 from utils.MetaSingleton import MetaSingleton
 

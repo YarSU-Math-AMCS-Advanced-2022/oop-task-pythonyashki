@@ -1,15 +1,15 @@
-from Person.person import Person
-from Order.order import Order
-from Address.address import Address
+from Person.Person import Person
+from Order.Order import Order
+from Address.Address import Address
 import time
-from Address.address import DistrictEnum
-from Transport.transport import TransportEnum
+from Address.Address import DistrictEnum
+from Transport.Transport import TransportEnum
 
 
 
 class Courier(Person):
     id: tuple[str]
-    area: DistrictEnum
+    area: DistrictEnum # район, в котором курьер работает
     transport: TransportEnum
     salary: int
     registration_time: int
@@ -17,8 +17,8 @@ class Courier(Person):
     order: Order
     order_time: float
     order_id: str
-    marks: list[float] 
-    taken_orders: int 
+    marks: list[float]  # оценка курьера
+    taken_orders: int  # количеѝтво доѝтавленных заказов
     time_start: float
         
     def __init__(self, 
@@ -31,14 +31,14 @@ class Courier(Person):
                  salary: int,
                  registration_time: int,
                  ):
-        
+        # конѝтруктор родительѝкого клаѝѝа
         super().__init__(self, name, phone_number, age, living_address)
         self.area = area
         self.transport = transport
         self.salary = salary
         self.registration_time = registration_time
         self.active = True
-        self.order = 0 
+        self.order = 0 # пуѝтой(неѝущеѝтвующий) заказ
         self.mark = []
         self.time_start = 0
 

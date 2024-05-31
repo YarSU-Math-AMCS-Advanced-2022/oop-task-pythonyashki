@@ -1,7 +1,7 @@
-from utils.generatorId import CreatorID
-from Shop.shop import Shop
-from Order.order import Order
-from Product.product import Product
+from utils.GeneratorId import CreatorID
+from Shop.Shop import Shop
+from Order.Order import Order
+from Product.Product import Product
 
 
 class OrderBuilder:

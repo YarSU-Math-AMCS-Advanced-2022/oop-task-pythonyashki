@@ -5,11 +5,11 @@ from utils.System import System
 
 from utils.MetaSingleton import MetaSingleton
 from Shop.ShopManager import ShopManager
-from Shop.shop import Shop
-from CourierManager.courier_manager import CourierManager
-from Address.address import DistrictEnum
-from Address.address import Address
-from Transport.transport import TransportEnum
+from Shop.Shop import Shop
+from CourierManager.Courier_manager import CourierManager
+from Address.Address import DistrictEnum
+from Address.Address import Address
+from Transport.Transport import TransportEnum
 
 class GeneralManager(metaclass=MetaSingleton):
     def __init__(self, file_path: str):

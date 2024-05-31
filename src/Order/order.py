@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
-from Product.product import Product
-from utils.enums import Area
+from Product.Product import Product
+from utils.Enums import Area
 
-@dataclass
+# @dataclass
 class Order:
     __id: str
     shop_id: Optional[str] = None
