@@ -7,70 +7,53 @@ from Address.address import DistrictEnum
 from Address.address import dist
 
 class CourierManager:
-    base: [Courier]
     
-    # функция которая по заказу определяет курьера, который будет доставлять этот заказ, или определяет
-    # что такого нет. От заказа нужно: откуда, куда, как долго можно ехать(в часах), вес(кг), объем(литры).
-    # коды ошибок 
-    # 0 - все хорошо
-    # 1 - не успеем доехать
-    # 2 - слишком тяжёлый заказ
-    # 3 - слишком объемный заказ
-    # 4 - нет свободных курьеров
-    def choose_courier(order: Order) -> (Courier, int):
-        
-        # проверяем что есть активные курьеры
-        found_active_cour = False
-        for cour in base:
-            if cour.active:
-                found_active_cour = True
-                break            
-        if not found_active_cour:
-            return (0, 4)
-        
-        if order.weight > 7.0 or order.volume > 5.0:
-            # считаем, что для большего веса или объема нужна машина
-            
-            # проверяем что успеем доехать
-            if dist(order.start, order.end) / TranSpeedEnum[CAR] > order.time_limit:
-                return (0, 1)
-            
-            for cour in base:
-                if cour.transport == CAR and cour.active == True:
-                    cour.take_order(order)
-                    return (cour, 0)
-                
-            if order.weight > 7.0:
-                return (0, 2)
-            else:
-                return (0, 3)
-        
-        # вес меньше 7, объем меньше 5
-        # проверяем что есть курьеры, которые смогут доставить за требуемое время
-        for cour in base:
-            if cour.active and dist(order.start, order.end) / TranSpeedEnum[cour.transport] <= order.time_limit:
-                return (cour, 0)
-        
-        # иначе говорим, что не успеваем доехать
-        return (0, 1)
+    #constructor
+    def _init__(self):        
+        self.areas: [Area] = [Area() for _ in range(3)]
+        self.matrix_areas: [[int]] = [[2], [2], [0], [1]]
 
-    # функция возвращает все заказы, доставляемые в данный момент
-    # если заказа не в списке, значит он был доставлен
-    def get_active_orders()->[Order]:
-        active_orders = []
-        for cour in base:
-            if cour.active == False:
-                active_orders.append(cour.order)
-        return active_orders
+    def tick(self):
+        for area in self.areas:
+            area.tick()
+
+    # returns true if order is taken, else returns false
+    def take_order(self, order: Order, road_length: float) -> bool:
+        self.tick()
+        courier = self.find_courier(order, road_length)
+        if courier == None:
+            return False
+        else
+            return True
+            
+    # adds new courier
+    def add_courier(self, courier: Courier):
+        self.areas[courier.area].add_courier(courier)
     
-    # добавление нового курьеры в базу
-    def add_courier(name: str,
-                 phone_number: str,
-                 age: int,
-                 living_address: Adderss,
-                 area: DistrictEnum,
-                 transport: TransportEnum,
-                 salary: int,
-                 registration_time: int) -> void:
-        cour = Courier(name, phone_number, living_address, area, transport, salary, registration_time)
-        base.append(cour)
+    # returns courier or None
+    def find_courier(self, order: Order, road_length: float):
+        self.tick()
+        # trying to find in order's area
+        courier = self.areas[order.area].find_courier(road_length, order)
+        
+        # if have found in order's area
+        if courier != None:
+            courier.time_starter(road_length, order.id[0])
+            return courier
+            
+        #else, trying to find in all other areas
+        for area in self.areas:
+            courier = area.find_courier(road_length, order)
+            if courier != None:
+                courier.time_starter(road_length + 1000, order.id[0])
+                return courier
+        return courier
+    
+    #returns  [order_id - courier_id] - [order_id - order_time - courier]
+    def get_status(self):
+        status = [], []
+        for area in self.areas:
+            orders = area.get_orders_status()
+            status[0].extend(orders[0])
+            status[1].extend(orders[1])
+        return status
