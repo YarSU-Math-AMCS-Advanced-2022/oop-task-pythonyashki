@@ -1,13 +1,15 @@
-import Courier
+import random
+from typing import Optional
+from Courier.Courier import Courier
 import Order
 import Address
-from Transport.transport import TransportEnum
-from Transport.transport import TranSpeedEnum
-from Address.address import DistrictEnum
-from Address.address import dist
+from Transport.Transport import TransportEnum
+from Transport.Transport import TranSpeedEnum
+from Address.Address import DistrictEnum
+from Address.Address import dist
+from Area.Area import Area
 
-class CourierManager:
-    
+class CourierManager:    
     #constructor
     def _init__(self):        
         self.areas: [Area] = [Area() for _ in range(3)]

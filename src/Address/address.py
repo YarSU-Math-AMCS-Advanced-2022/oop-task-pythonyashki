@@ -1,4 +1,8 @@
 from enum import Enum
+from typing import Dict, Optional
+
+# from Courier.courier import Courier
+# from Order.Order import Order
 
 class DistrictEnum(Enum):
     UNDEFINE = 0
@@ -29,7 +33,6 @@ class Address:
         self.street = street
         self.house_number = house_number
         self.apart_number = apart_number
-        
-# функция заглушка
+
 def dist(adrs1: Address, adrs2: Address) -> float:
-    # return расстояние между двумя адресами
+    return

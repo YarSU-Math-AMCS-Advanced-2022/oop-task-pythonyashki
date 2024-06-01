@@ -1,8 +1,9 @@
-import Person
-import DistrictEnum
-import TransportEnum
-import Order
-import Address
+from Person.Person import Person
+from Order.Order import Order
+from Address.Address import Address
+import time
+from Address.Address import DistrictEnum
+from Transport.Transport import TransportEnum
 
 import time
 
@@ -37,9 +38,9 @@ class Courier(Person):
         if time.time() - self.start_time >= self.order_time:
             self.with_order = False
         
-    def mark_cour(mark: int) -> void:
+    def mark_cour(self, mark: int) -> None:
         if 1 <= mark and mark <= 5:
-            marks.append(float(mark))
+            self.marks.append(float(mark))
             
-    def get_mark() -> float:
-        return sum(marks) / len(marks)
+    def get_mark(self) -> float:
+        return sum(self.marks) / len(self.marks)
