@@ -1,6 +1,6 @@
 import random
 from typing import Optional
-from Courier.Courier import Courier
+from Courier.Сourier import Courier
 import Order
 import Address
 from Transport.Transport import TransportEnum
@@ -25,7 +25,7 @@ class CourierManager:
         courier = self.find_courier(order, road_length)
         if courier == None:
             return False
-        else
+        else:
             return True
             
     # adds new courier
