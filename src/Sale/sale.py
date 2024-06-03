@@ -15,3 +15,6 @@ class Sale:
 
     def __init__(self, id) -> None:
         self._id = id
+
+    def get_id(self):
+        return self._id

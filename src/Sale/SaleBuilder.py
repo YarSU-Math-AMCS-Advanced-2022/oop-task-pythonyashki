@@ -18,6 +18,9 @@ class saleBuilder:
         self.__sale.timeStart = time_start
         self.__sale.timeEnd = time_end
     
+    def get_sale_id(self):
+        return self.__sale._id
+    
 
     @property
     def sale(self) -> Sale:

@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional
+from Order.Basket import Basket
 from Product.Product import Product
 from utils.Enums import Area
 
@@ -12,6 +13,7 @@ class Order:
     weight: Optional[int] = None
     completion_time: Optional[int] = None
     price: Optional[float] = None
+    basket: Optional[Basket] = None
 
     def __init__(self, id) -> None:
         self.__id = id
@@ -41,3 +43,7 @@ class Order:
     @property
     def is_empty_products(self) -> bool:
         return len(self.products) != 0
+    
+    @property
+    def set_backet(self, basket: Basket):
+        self.basket = basket

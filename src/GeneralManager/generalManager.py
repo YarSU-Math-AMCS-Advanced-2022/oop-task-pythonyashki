@@ -2,6 +2,8 @@ import json
 import random
 import time
 from Courier.Сourier import Courier
+from Product.Product import Product
+from Sale.SaleBuilder import saleBuilder
 from utils.GeneratorId import CreatorID
 from utils.System import System
 

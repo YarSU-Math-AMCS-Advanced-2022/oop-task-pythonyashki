@@ -1,5 +1,7 @@
 import json
 from typing import Optional
+from Date.Date import Date
+from Sale.SaleBuilder import saleBuilder
 from Shop.Shop import Shop
 from Order.Order import Order
 from Order.OrderBuilder import OrderBuilder
@@ -13,6 +15,7 @@ class ShopManager(metaclass=MetaSingleton):
     """Class-manager of shops and restaurants"""
     def __init__(self):
         self.__shops: list[Shop] = []
+        self.__sales: list[saleBuilder] = []
 
     def __str__(self):
         return f'Спиѝок магазинов:\n' + '\n'.join(
@@ -93,6 +96,15 @@ class ShopManager(metaclass=MetaSingleton):
             shop_idx = self.__shop_selection_menu()
             System.clear_terminal()
         return builder.order
+    
+    def __set_sale(self, shop: Shop, product: Product, time_start: Date, time_end: Date) -> None:
+        sale = saleBuilder()
+        sale.add_product(product)
+        sale.add_shop(shop)
+        sale.set_time_sale(time_start, time_end)
+    
+    def __remove_sale(self, sale: saleBuilder):
+        self.__sales.remove(sale)
 
     def __shop_selection_menu(self) -> Optional[int]:
         """
