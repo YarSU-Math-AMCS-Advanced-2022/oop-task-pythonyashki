@@ -1,6 +1,8 @@
 import json
 import random
 import time
+from Courier.Сourier import Courier
+from utils.GeneratorId import CreatorID
 from utils.System import System
 
 from utils.MetaSingleton import MetaSingleton
@@ -25,16 +27,16 @@ class GeneralManager(metaclass=MetaSingleton):
         with open(file_path, 'r') as file:
             data = json.load(file)
         for i in range(len(data)):
-            self.__courier_manager.add_courier(
-                data[i]["name"],
-                data[i]["phone_number"],
-                data[i]["age"],
-                Address(data[i]["living_address"]),
-                DistrictEnum(data[i]["area"]),
-                TransportEnum(data[i]["transport"]),
-                data[i]["salary"],
-                data[i]["registration_time"]
+            man = Courier(
+                CreatorID.generate_id(),
+                data[i]["area"],
+                data[i]["current_order"],
+                data[i]["transport"],
+                data[i]["order_time"],
+                data[i]["order_id"],
+                data[i]["time_start"]
             )
+            self.__courier_manager.add_courier(man)
 
     def __get_order_status(self) -> str:
         result = []
@@ -58,15 +60,15 @@ class GeneralManager(metaclass=MetaSingleton):
             if chose == 1:
                 order = self.__shop_manager.make_order()
                 if order.is_valid:
-                    print(f'Заказ принят. Id заказа {order.id[0][-8:]}.\n'
+                    print(f'Заказ принѝт. Id заказа {order.id[0][-8:]}.\n'
                           f'Ищем доѝтавщика...')
                     length = random.randint(0, 1000)
                     if not self.__courier_manager.accept_order(
                             order,
                             length
                     ):
-                        print('Свободных доставщиков в вашем районе пока нет, '
-                              'идет поиск...')
+                        print('Свободных доѝтавщиков в вашем районе пока нет, '
+                              'идет поиѝк...')
                         while not self.__courier_manager.accept_order(
                                 order,
                                 length
@@ -74,7 +76,7 @@ class GeneralManager(metaclass=MetaSingleton):
                             print(self.__get_order_status())
                             time.sleep(5)
                             self.__courier_manager.tick()
-                    print('Доставщик найден!')
+                    print('Доѝтавщик найден!')
                     _ = input()
                     System.clear_terminal()
             elif chose == 2:

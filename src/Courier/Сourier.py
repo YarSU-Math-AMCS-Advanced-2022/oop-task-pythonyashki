@@ -1,23 +1,44 @@
+from dataclasses import dataclass
 from Person.Person import Person
 from Order.Order import Order
 from Address.Address import Address
 import time
 from Address.Address import DistrictEnum
-from Transport.Transport import TransportEnum
+from Transport.Transport import TranSpeedEnum, TransportEnum
 
 import time
 
+@dataclass
 class Courier(Person):
-    iden: tuple[str]# courier id
-    with_order: bool# true if courier delivers order right now, else false
+    id: tuple[str]
     area: int
+    current_order: bool
     transport: str
-    start_time: float
     order_time: float
     order_id: str
+    time_start: float
+    marks: list[float]
     salary: float
-    marks: [float] # courier's mark    
+
+
+    def __init__(self, id, area, current_order, transport, order_time, order_id, time_start): 
+        self.id: tuple[str] = id
+        self.area: int = area
+        self.current_order: bool = current_order
+        self.transport: str = transport
+        self.order_time: float = order_time
+        self.order_id: str = order_id
+        self.time_start: float = time_start
+
+    def set_marks(self, marks: list[float]):
+        self.marks = marks
+
+    def set_salary(self, salary):
+        self.salary = salary
     
+    def set_with_order(self, with_order):
+        self.with_order = with_order
+
     #returns true if courier can take the order, else false
     def is_free(self) -> bool:
         if self.with_order:

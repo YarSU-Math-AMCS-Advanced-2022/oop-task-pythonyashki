@@ -12,6 +12,9 @@ class Order:
     weight: Optional[int] = None
     completion_time: Optional[int] = None
     price: Optional[float] = None
+
+    def __init__(self, id) -> None:
+        self.__id = id
     
     @property
     def get_id(self) -> str:

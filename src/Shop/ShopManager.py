@@ -4,6 +4,7 @@ from Shop.Shop import Shop
 from Order.Order import Order
 from Order.OrderBuilder import OrderBuilder
 from Product.Product import Product
+from utils.GeneratorId import CreatorID
 from utils.System import System
 from utils.MetaSingleton import MetaSingleton
 
@@ -41,14 +42,10 @@ class ShopManager(metaclass=MetaSingleton):
         result: list[Product] = []
         for product in data:
             result.append(
-                Product(
-                    name=product['name'],
+                Product(id=CreatorID.generate_id(), name=product['name'],
                     price=product['price'],
                     weight=product['weight'],
-                    composition=product['composition'],
-                    time_cooking=product['time_cooking']
-                )
-            )
+                    composition=product['composition']))
         return result
 
     def make_order(self) -> Order:

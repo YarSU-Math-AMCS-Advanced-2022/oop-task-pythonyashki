@@ -11,9 +11,9 @@ from Area.Area import Area
 
 class CourierManager:    
     #constructor
-    def _init__(self):        
-        self.areas: [Area] = [Area() for _ in range(3)]
-        self.matrix_areas: [[int]] = [[2], [2], [0], [1]]
+    def __init__(self):        
+        self.areas: list[Area] = [Area() for _ in range(3)]
+        self.matrix_areas: list[list[int]] = [[2], [2], [0], [1]]
 
     def tick(self):
         for area in self.areas:
