@@ -1,0 +1,177 @@
+[
+    {
+        "name": "Pyaterochka",
+        "menu": [
+            {
+                "name": "Milk",
+                "price": 60,
+                "weight": 1000,
+                "composition": "milk",
+                "time_cooking": 1
+            },
+            {
+                "name": "Potato",
+                "price": 27.99,
+                "weight": 1000,
+                "composition": "potato",
+                "time_cooking": 1
+            },
+            {
+                "name": "Orange juice",
+                "price": 120,
+                "weight": 900,
+                "composition": "orange, water, sugar",
+                "time_cooking": 1
+            },
+            {
+                "name": "Toothpaste",
+                "price": 292.6,
+                "weight": 75,
+                "composition": "water, sorbitol, silica, glycerin",
+                "time_cooking": 1
+            },
+            {
+                "name": "Sunflower oil",
+                "price": 129,
+                "weight": 750,
+                "composition": "sunflower oil refined deodorized, food extract",
+                "time_cooking": 1
+            }
+        ],
+        "stop_list": [],
+        "area": 0
+    },
+    {
+        "name": "Magnit",
+        "menu": [
+            {
+                "name": "Bread",
+                "price": 40,
+                "weight": 500,
+                "composition": "water, flour, yeast",
+                "time_cooking": 1
+            },
+            {
+                "name": "Potato",
+                "price": 41.99,
+                "weight": 1000,
+                "composition": "potato",
+                "time_cooking": 1
+            },
+            {
+                "name": "Apple juice",
+                "price": 100,
+                "weight": 750,
+                "composition": "apple, water, sugar",
+                "time_cooking": 1
+            },
+            {
+                "name": "Toilet paper",
+                "price": 199.99,
+                "weight": 796,
+                "composition": "cellulose",
+                "time_cooking": 1
+            },
+            {
+                "name": "Mayonnaise",
+                "price": 131,
+                "weight": 400,
+                "composition": "sunflower oil, egg, milk, sugar, salt",
+                "time_cooking": 1
+            },
+            {
+                "name": "Potato chips",
+                "price": 74.45,
+                "weight": 80,
+                "composition": "potatoes, vegetable oil, glucose, salt",
+                "time_cooking": 1
+            }
+        ],
+        "stop_list": [],
+        "area": 1
+    },
+    {
+        "name": "Dixy",
+        "menu": [
+            {
+                "name": "Milk",
+                "price": 60,
+                "weight": 1000,
+                "composition": "milk",
+                "time_cooking": 1
+            },
+            {
+                "name": "Eggs",
+                "price": 90,
+                "weight": 650,
+                "composition": "eggs",
+                "time_cooking": 1
+            },
+            {
+                "name": "Chocolate bar",
+                "price": 126.99,
+                "weight": 90,
+                "composition": "sugar, milk, cocoa butter, nuts",
+                "time_cooking": 1
+            },
+            {
+                "name": "Toothpaste",
+                "price": 301,
+                "weight": 75,
+                "composition": "water, sorbitol, silica, glycerin",
+                "time_cooking": 1
+            },
+            {
+                "name": "Cheese",
+                "price": 166.55,
+                "weight": 200,
+                "composition": "milk, salt, sourdough, milk-clotting enzyme",
+                "time_cooking": 1
+            }
+        ],
+        "stop_list": [],
+        "area": 2
+    },
+    {
+        "name": "Globus",
+        "menu": [
+            {
+                "name": "Cottage cheese",
+                "price": 117.99,
+                "weight": 200,
+                "composition": "milk, sourdough",
+                "time_cooking": 1
+            },
+            {
+                "name": "Radish",
+                "price": 79.99,
+                "weight": 500,
+                "composition": "radish",
+                "time_cooking": 1
+            },
+            {
+                "name": "Strawberry",
+                "price": 600,
+                "weight": 1000,
+                "composition": "strawberry",
+                "time_cooking": 1
+            },
+            {
+                "name": "Dumplings",
+                "price": 150,
+                "weight": 500,
+                "composition": "minced pork, flour, water, salt",
+                "time_cooking": 1
+            },
+            {
+                "name": "Sunflower oil",
+                "price": 302.66,
+                "weight": 750,
+                "composition": "sunflower oil refined deodorized, food extract",
+                "time_cooking": 1
+            }
+        ],
+        "stop_list": [],
+        "area": 0
+    }
+]
